@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="section">
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Original URL</th>
+                    <th>Short URL</th>
+                    <th>Visits</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Original URL</th>
+                    <th>Short URL</th>
+                    <th>Visits</th>
+                </tr>
+            </tfoot>
+            <tbody>
+                {% for link in links %}
+                <tr>
+                    <td>{{ link.original_url }}</td>
+                    <td>{{ url_for('short.redirect_to_url', short_url=link.short_url, _external=True) }}</td>
+                    <td>{{ link.visits }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock content %}
